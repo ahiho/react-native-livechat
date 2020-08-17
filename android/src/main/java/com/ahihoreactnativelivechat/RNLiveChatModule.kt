@@ -127,13 +127,14 @@ class RNLiveChatModule(reactContext: ReactApplicationContext) : ReactContextBase
 
   override fun onStartFilePickerActivity(intent: Intent?, requestCode: Int) {
     sendEvent(EVENT_ON_START_FILE_PICKER, null)
+    mContext.currentActivity?.startActivityForResult(intent, requestCode)
   }
 
   override fun handleUri(uri: Uri?): Boolean {
     val map: WritableMap = WritableNativeMap()
     map.putString("uri", uri.toString())
     sendEvent(EVENT_ON_HANDLE_URL, map)
-    return true
+    return false
   }
 
   override fun onChatWindowVisibilityChanged(visible: Boolean) {
@@ -156,5 +157,9 @@ class RNLiveChatModule(reactContext: ReactApplicationContext) : ReactContextBase
     const val EVENT_ON_START_FILE_PICKER = "onStartFilePicker"
     const val EVENT_ON_HANDLE_URL = "onHandleUrl"
     const val EVENT_ON_CHAT_WINDOW_VISIBILITY_CHANGED = "onChatWindowVisibilityChanged"
+  }
+
+  init {
+      mContext.addActivityEventListener(this)
   }
 }
