@@ -1,6 +1,6 @@
 {
   "name": "@ahiho/react-native-livechat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Native LiveChat SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
