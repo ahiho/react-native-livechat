@@ -1,9 +1,13 @@
 import { NativeModules } from 'react-native';
 
-type ReactNativeLivechatType = {
-  multiply(a: number, b: number): Promise<number>;
+type RNLiveChatType = {
+  initialize(license: string): void;
+  setGroup(groupId: string): void;
+  presentChat(): void;
+  setCustomer(name: string, email: string): void;
+  setVariable(key: string, value: string): void;
 };
 
-const { ReactNativeLivechat } = NativeModules;
+const { RNLiveChat } = NativeModules;
 
-export default ReactNativeLivechat as ReactNativeLivechatType;
+export default RNLiveChat as RNLiveChatType;

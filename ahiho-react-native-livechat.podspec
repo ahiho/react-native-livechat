@@ -18,4 +18,11 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React"
+
+  s.subspec "LiveChat" do |ss|
+        
+    s.dependency 'LiveChat', '~> 2.0.18'
+    
+    s.static_framework = true
+  end
 end

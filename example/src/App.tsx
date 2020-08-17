@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import ReactNativeLivechat from '@ahiho/react-native-livechat';
+import { StyleSheet, View, Button } from 'react-native';
+import LiveChat from '@ahiho/react-native-livechat';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
   React.useEffect(() => {
-    ReactNativeLivechat.multiply(3, 7).then(setResult);
+    LiveChat.initialize('12150039');
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title="show LiveChat" onPress={() => LiveChat.presentChat()} />
     </View>
   );
 }

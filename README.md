@@ -11,11 +11,11 @@ npm install @ahiho/react-native-livechat
 ## Usage
 
 ```js
-import ReactNativeLivechat from "@ahiho/react-native-livechat";
+import LiveChat from "@ahiho/react-native-livechat";
 
 // ...
 
-const result = await ReactNativeLivechat.multiply(3, 7);
+LiveChat.
 ```
 
 ## Contributing

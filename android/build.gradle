@@ -54,6 +54,7 @@ repositories {
   mavenCentral()
   jcenter()
   google()
+  maven { url 'https://jitpack.io' }
 
   def found = false
   def defaultDir = null
@@ -127,4 +128,6 @@ dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  compile 'com.github.livechat:chat-window-android:v2.0.4'
 }
