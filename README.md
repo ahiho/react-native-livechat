@@ -13,9 +13,12 @@ npm install @ahiho/react-native-livechat
 ```js
 import LiveChat from "@ahiho/react-native-livechat";
 
-// ...
+// Initialize LiveChat SDK
 
-LiveChat.
+LiveChat.initialize('YOUR_LICENSE_ID_HERE');
+
+// Show LiveChat window
+LiveChat.presentChat();
 ```
 
 ## Contributing
