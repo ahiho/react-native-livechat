@@ -104,6 +104,15 @@ class RNLiveChatModule(reactContext: ReactApplicationContext) : ReactContextBase
     }).start()
   }
 
+  @ReactMethod
+  fun hideChat() {
+    Thread(Runnable {
+      mContext.currentActivity?.runOnUiThread(Runnable{
+        fullScreenChatWindowView.hideChatWindow()
+      })
+    }).start()
+  }
+
   override fun onNewIntent(intent: Intent?) {
 
   }
