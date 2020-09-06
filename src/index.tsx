@@ -1,8 +1,15 @@
-import { NativeModules, BackHandler, NativeEventEmitter } from 'react-native';
+import {
+  NativeModules,
+  BackHandler,
+  NativeEventEmitter,
+  EventSubscription,
+} from 'react-native';
 import { useState, useEffect } from 'react';
 const { RNLiveChat } = NativeModules;
 
 const emitter = new NativeEventEmitter(RNLiveChat);
+
+type RNLiveChatEvent = 'onChatWindowVisibilityChanged';
 
 type RNLiveChatType = {
   initialize(license: string): void;
@@ -12,6 +19,12 @@ type RNLiveChatType = {
   setVariable(key: string, value: string): void;
   // Only available on Android
   hideChat(): void;
+
+  addEventListener(
+    eventType: RNLiveChatEvent,
+    listener: (...args: []) => any
+  ): EventSubscription;
+  removeAllListeners(eventType: RNLiveChatEvent): void;
 };
 
 export const useLiveChat = (): RNLiveChatType => {
@@ -55,4 +68,12 @@ export const useLiveChat = (): RNLiveChatType => {
   } as RNLiveChatType;
 };
 
-export default RNLiveChat as RNLiveChatType;
+export default {
+  ...RNLiveChat,
+  addEventListener: (
+    eventType: RNLiveChatEvent,
+    listener: (...args: []) => any
+  ) => emitter.addListener(eventType, listener),
+  removeAllListeners: (eventType: RNLiveChatEvent) =>
+    emitter.removeAllListeners(eventType),
+} as RNLiveChatType;
